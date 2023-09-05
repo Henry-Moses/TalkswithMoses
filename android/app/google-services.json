@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "88121706650",
+    "project_id": "talkswithmoses-7f14c",
+    "storage_bucket": "talkswithmoses-7f14c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88121706650:android:d8fafae6ebf77050983723",
+        "android_client_info": {
+          "package_name": "com.mycompany.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88121706650-pkd1hdgddbppps3rvgtaqg4j1ap3u5jo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtzj2Tda2jZoJEtO4j8IR8CGH_LN7uZHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "88121706650-pkd1hdgddbppps3rvgtaqg4j1ap3u5jo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "88121706650-tdp97r0n3pgb28jkpgn99jl6lc5is4po.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.test"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
