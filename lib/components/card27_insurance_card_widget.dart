@@ -99,7 +99,7 @@ class _Card27InsuranceCardWidgetState extends State<Card27InsuranceCardWidget>
                 style: FlutterFlowTheme.of(context).headlineSmall,
               ),
               Text(
-                'Elderly Family Member: Henry Moses Sr',
+                'Elderly Family Member: ',
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
               Padding(
