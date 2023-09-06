@@ -560,7 +560,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget> {
                         await authManager.signOut();
                         GoRouter.of(context).clearRedirectLocation();
 
-                        context.goNamedAuth('Onboarding2', context.mounted);
+                        context.goNamedAuth('CreateAccount', context.mounted);
                       },
                       text: 'Log Out',
                       options: FFButtonOptions(
