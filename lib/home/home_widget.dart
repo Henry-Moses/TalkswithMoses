@@ -1,4 +1,4 @@
-import '/backend/backend.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/card27_insurance_card_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -170,8 +170,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
               Expanded(
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 0.0),
-                  child: StreamBuilder<List<ElderlyFamilyMemberRecord>>(
-                    stream: queryElderlyFamilyMemberRecord(),
+                  child: FutureBuilder<List<FamilyMemberRow>>(
+                    future: FamilyMemberTable().queryRows(
+                      queryFn: (q) => q,
+                    ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -187,17 +189,15 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                           ),
                         );
                       }
-                      List<ElderlyFamilyMemberRecord>
-                          listViewElderlyFamilyMemberRecordList =
+                      List<FamilyMemberRow> listViewFamilyMemberRowList =
                           snapshot.data!;
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         scrollDirection: Axis.vertical,
-                        itemCount: listViewElderlyFamilyMemberRecordList.length,
+                        itemCount: listViewFamilyMemberRowList.length,
                         itemBuilder: (context, listViewIndex) {
-                          final listViewElderlyFamilyMemberRecord =
-                              listViewElderlyFamilyMemberRecordList[
-                                  listViewIndex];
+                          final listViewFamilyMemberRow =
+                              listViewFamilyMemberRowList[listViewIndex];
                           return Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 1.0),
@@ -211,14 +211,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                   'ElderProfile',
                                   queryParameters: {
                                     'familyMember': serializeParam(
-                                      listViewElderlyFamilyMemberRecord,
-                                      ParamType.Document,
+                                      listViewFamilyMemberRow,
+                                      ParamType.SupabaseRow,
                                     ),
                                   }.withoutNulls,
-                                  extra: <String, dynamic>{
-                                    'familyMember':
-                                        listViewElderlyFamilyMemberRecord,
-                                  },
                                 );
                               },
                               child: Container(
@@ -262,7 +258,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                '${listViewElderlyFamilyMemberRecord.firstName} ${listViewElderlyFamilyMemberRecord.lastName}',
+                                                '${listViewFamilyMemberRow.firstName} ${listViewFamilyMemberRow.lastName}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLarge,
@@ -273,7 +269,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Age:${listViewElderlyFamilyMemberRecord.age}',
+                                                'Age:${listViewFamilyMemberRow.age}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -297,7 +293,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Relationship: ${listViewElderlyFamilyMemberRecord.relation}',
+                                                      'Relationship: ${listViewFamilyMemberRow.relationship}',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)

@@ -95,12 +95,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ElderProfile',
           path: '/elderProfile',
-          asyncParams: {
-            'familyMember': getDoc(['elderly_family_member'],
-                ElderlyFamilyMemberRecord.fromSnapshot),
-          },
           builder: (context, params) => ElderProfileWidget(
-            familyMember: params.getParam('familyMember', ParamType.Document),
+            familyMember: params.getParam<FamilyMemberRow>(
+                'familyMember', ParamType.SupabaseRow),
           ),
         ),
         FFRoute(

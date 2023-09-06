@@ -1,15 +1,10 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
-import '/backend/backend.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -24,7 +19,7 @@ class CreateRecordingWidget extends StatefulWidget {
     required this.familyMember,
   }) : super(key: key);
 
-  final ElderlyFamilyMemberRecord? familyMember;
+  final FamilyMemberRow? familyMember;
 
   @override
   _CreateRecordingWidgetState createState() => _CreateRecordingWidgetState();
@@ -224,129 +219,59 @@ class _CreateRecordingWidgetState extends State<CreateRecordingWidget>
                                               borderRadius:
                                                   BorderRadius.circular(16.0),
                                             ),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                final selectedFiles =
-                                                    await selectFiles(
-                                                  storageFolderPath: 'uploads',
-                                                  allowedExtensions: ['mp3'],
-                                                  multiFile: false,
-                                                );
-                                                if (selectedFiles != null) {
-                                                  setState(() => _model
-                                                      .isDataUploading = true);
-                                                  var selectedUploadedFiles =
-                                                      <FFUploadedFile>[];
-
-                                                  var downloadUrls = <String>[];
-                                                  try {
-                                                    selectedUploadedFiles =
-                                                        selectedFiles
-                                                            .map((m) =>
-                                                                FFUploadedFile(
-                                                                  name: m
-                                                                      .storagePath
-                                                                      .split(
-                                                                          '/')
-                                                                      .last,
-                                                                  bytes:
-                                                                      m.bytes,
-                                                                ))
-                                                            .toList();
-
-                                                    downloadUrls =
-                                                        await uploadSupabaseStorageFiles(
-                                                      bucketName:
-                                                          'test_test_bucket',
-                                                      selectedFiles:
-                                                          selectedFiles,
-                                                    );
-                                                  } finally {
-                                                    _model.isDataUploading =
-                                                        false;
-                                                  }
-                                                  if (selectedUploadedFiles
-                                                              .length ==
-                                                          selectedFiles
-                                                              .length &&
-                                                      downloadUrls.length ==
-                                                          selectedFiles
-                                                              .length) {
-                                                    setState(() {
-                                                      _model.uploadedLocalFile =
-                                                          selectedUploadedFiles
-                                                              .first;
-                                                      _model.uploadedFileUrl =
-                                                          downloadUrls.first;
-                                                    });
-                                                  } else {
-                                                    setState(() {});
-                                                    return;
-                                                  }
-                                                }
-
-                                                setState(() {
-                                                  FFAppState().audioURL = '';
-                                                });
-                                              },
-                                              child: Stack(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                children: [
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Icon(
-                                                        Icons.graphic_eq_sharp,
-                                                        color:
+                                            child: Stack(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              children: [
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Icon(
+                                                      Icons.graphic_eq_sharp,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 72.0,
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  12.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Upload Audio',
+                                                        style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryText,
-                                                        size: 72.0,
+                                                                .titleLarge,
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    12.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'Upload Audio',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .titleLarge,
-                                                        ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Upload your audio here...',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium,
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    4.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'Upload your audio here...',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ),
@@ -366,99 +291,8 @@ class _CreateRecordingWidgetState extends State<CreateRecordingWidget>
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 4.0, 0.0),
                                             child: FFButtonWidget(
-                                              onPressed: () async {
-                                                _model.apiResult =
-                                                    await DeepgramCall.call(
-                                                  url: _model.uploadedFileUrl,
-                                                );
-                                                if ((_model
-                                                        .apiResult?.succeeded ??
-                                                    true)) {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text('It works'),
-                                                        content:
-                                                            Text('It works'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-                                                  _model.api =
-                                                      await ChatGPTAPICall.call(
-                                                    transcript:
-                                                        DeepgramCall.transcript(
-                                                      (_model.apiResult
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    ).toString(),
-                                                  );
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text('JSON'),
-                                                        content: Text((_model
-                                                                    .api
-                                                                    ?.jsonBody ??
-                                                                '')
-                                                            .toString()),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-                                                  Navigator.pop(context);
-
-                                                  await ElderlyAudioFilesRecord
-                                                      .collection
-                                                      .doc()
-                                                      .set(
-                                                          createElderlyAudioFilesRecordData(
-                                                        audio: _model
-                                                            .uploadedFileUrl,
-                                                        elderlyFamilyMember:
-                                                            widget.familyMember
-                                                                ?.reference,
-                                                      ));
-                                                } else {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title:
-                                                            Text('Doesnt Work'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-                                                }
-
-                                                setState(() {});
+                                              onPressed: () {
+                                                print('Button pressed ...');
                                               },
                                               text: 'Save',
                                               options: FFButtonOptions(
@@ -492,24 +326,6 @@ class _CreateRecordingWidgetState extends State<CreateRecordingWidget>
                                           ),
                                         ),
                                       ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 8.0),
-                                    child: Text(
-                                      _model.uploadedFileUrl,
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelMedium,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 8.0),
-                                    child: Text(
-                                      _model.isDataUploading.toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelMedium,
                                     ),
                                   ),
                                 ],

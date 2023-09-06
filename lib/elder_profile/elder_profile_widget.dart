@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/create_recording_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -20,7 +21,7 @@ class ElderProfileWidget extends StatefulWidget {
     required this.familyMember,
   }) : super(key: key);
 
-  final ElderlyFamilyMemberRecord? familyMember;
+  final FamilyMemberRow? familyMember;
 
   @override
   _ElderProfileWidgetState createState() => _ElderProfileWidgetState();
@@ -187,7 +188,7 @@ class _ElderProfileWidgetState extends State<ElderProfileWidget>
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: Text(
-                  '${widget.familyMember?.hasFirstName()?.toString()} ${widget.familyMember?.hasLastName()?.toString()}',
+                  '${widget.familyMember?.firstName} ${widget.familyMember?.lastName}',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).headlineSmall.override(
                         fontFamily: 'Roboto',
@@ -198,7 +199,7 @@ class _ElderProfileWidgetState extends State<ElderProfileWidget>
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 0.0),
                 child: GradientText(
-                  'Relationship: ${widget.familyMember?.hasRelation()?.toString()}',
+                  'Relationship: ${widget.familyMember?.relationship}',
                   style: FlutterFlowTheme.of(context).labelSmall.override(
                         fontFamily: 'Roboto',
                         color: FlutterFlowTheme.of(context).secondary,
@@ -309,7 +310,7 @@ class _ElderProfileWidgetState extends State<ElderProfileWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 16.0, 0.0, 0.0),
                                   child: Text(
-                                    '${widget.familyMember?.hasFirstName()?.toString()}\'s Recordings',
+                                    '${widget.familyMember?.firstName}\'s Recordings',
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
                                         .headlineSmall

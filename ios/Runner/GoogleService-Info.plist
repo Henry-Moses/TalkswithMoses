@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>88121706650-tdp97r0n3pgb28jkpgn99jl6lc5is4po.apps.googleusercontent.com</string>
+	<string>426884302069-s01atlevcaknd03i8lapitg8kgbb0045.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.88121706650-tdp97r0n3pgb28jkpgn99jl6lc5is4po</string>
+	<string>com.googleusercontent.apps.426884302069-s01atlevcaknd03i8lapitg8kgbb0045</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>426884302069-vtsg8b7nd3sr5sr55nne3f5tif6ptenl.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAomZwqv1c3cqY1Tu65-HPqrUJxJkCnobM</string>
+	<string>AIzaSyDa44bW89Hw9wPMm4axR3kQoKqy8fsepQM</string>
 	<key>GCM_SENDER_ID</key>
-	<string>88121706650</string>
+	<string>426884302069</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.mycompany.test</string>
 	<key>PROJECT_ID</key>
-	<string>talkswithmoses-7f14c</string>
+	<string>talkswithmoses-d95f2</string>
 	<key>STORAGE_BUCKET</key>
-	<string>talkswithmoses-7f14c.appspot.com</string>
+	<string>talkswithmoses-d95f2.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:88121706650:ios:ea8021b03d1e5a63983723</string>
+	<string>1:426884302069:ios:3a3714531860c47b2c31bc</string>
 </dict>
 </plist>
