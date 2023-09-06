@@ -1,4 +1,3 @@
-import '/backend/backend.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/create_recording_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -327,8 +326,13 @@ class _ElderProfileWidgetState extends State<ElderProfileWidget>
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 30.0, 0.0, 30.0, 0.0),
-                            child: StreamBuilder<List<ElderlyAudioFilesRecord>>(
-                              stream: queryElderlyAudioFilesRecord(),
+                            child: FutureBuilder<List<RecordingRow>>(
+                              future: RecordingTable().queryRows(
+                                queryFn: (q) => q.eq(
+                                  'family_member_id',
+                                  widget.familyMember?.id,
+                                ),
+                              ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -345,19 +349,16 @@ class _ElderProfileWidgetState extends State<ElderProfileWidget>
                                     ),
                                   );
                                 }
-                                List<ElderlyAudioFilesRecord>
-                                    listViewElderlyAudioFilesRecordList =
+                                List<RecordingRow> listViewRecordingRowList =
                                     snapshot.data!;
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
-                                  itemCount: listViewElderlyAudioFilesRecordList
-                                      .length,
+                                  itemCount: listViewRecordingRowList.length,
                                   itemBuilder: (context, listViewIndex) {
-                                    final listViewElderlyAudioFilesRecord =
-                                        listViewElderlyAudioFilesRecordList[
-                                            listViewIndex];
+                                    final listViewRecordingRow =
+                                        listViewRecordingRowList[listViewIndex];
                                     return Align(
                                       alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(

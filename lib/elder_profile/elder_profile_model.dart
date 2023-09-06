@@ -1,4 +1,3 @@
-import '/backend/backend.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/create_recording_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';

@@ -1,9 +1,11 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -219,59 +221,144 @@ class _CreateRecordingWidgetState extends State<CreateRecordingWidget>
                                               borderRadius:
                                                   BorderRadius.circular(16.0),
                                             ),
-                                            child: Stack(
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              children: [
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Icon(
-                                                      Icons.graphic_eq_sharp,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      size: 72.0,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  12.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        'Upload Audio',
-                                                        style:
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                final selectedMedia =
+                                                    await selectMediaWithSourceBottomSheet(
+                                                  context: context,
+                                                  storageFolderPath:
+                                                      'audio_uploads',
+                                                  allowPhoto: true,
+                                                  allowVideo: true,
+                                                );
+                                                if (selectedMedia != null &&
+                                                    selectedMedia.every((m) =>
+                                                        validateFileFormat(
+                                                            m.storagePath,
+                                                            context))) {
+                                                  setState(() => _model
+                                                      .isDataUploading = true);
+                                                  var selectedUploadedFiles =
+                                                      <FFUploadedFile>[];
+
+                                                  var downloadUrls = <String>[];
+                                                  try {
+                                                    selectedUploadedFiles =
+                                                        selectedMedia
+                                                            .map((m) =>
+                                                                FFUploadedFile(
+                                                                  name: m
+                                                                      .storagePath
+                                                                      .split(
+                                                                          '/')
+                                                                      .last,
+                                                                  bytes:
+                                                                      m.bytes,
+                                                                  height: m
+                                                                      .dimensions
+                                                                      ?.height,
+                                                                  width: m
+                                                                      .dimensions
+                                                                      ?.width,
+                                                                  blurHash: m
+                                                                      .blurHash,
+                                                                ))
+                                                            .toList();
+
+                                                    downloadUrls =
+                                                        await uploadSupabaseStorageFiles(
+                                                      bucketName:
+                                                          'test_test_bucket',
+                                                      selectedFiles:
+                                                          selectedMedia,
+                                                    );
+                                                  } finally {
+                                                    _model.isDataUploading =
+                                                        false;
+                                                  }
+                                                  if (selectedUploadedFiles
+                                                              .length ==
+                                                          selectedMedia
+                                                              .length &&
+                                                      downloadUrls.length ==
+                                                          selectedMedia
+                                                              .length) {
+                                                    setState(() {
+                                                      _model.uploadedLocalFile =
+                                                          selectedUploadedFiles
+                                                              .first;
+                                                      _model.uploadedFileUrl =
+                                                          downloadUrls.first;
+                                                    });
+                                                  } else {
+                                                    setState(() {});
+                                                    return;
+                                                  }
+                                                }
+
+                                                setState(() {
+                                                  FFAppState().audioURL =
+                                                      _model.uploadedFileUrl;
+                                                });
+                                              },
+                                              child: Stack(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                children: [
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Icon(
+                                                        Icons.graphic_eq_sharp,
+                                                        color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .titleLarge,
+                                                                .secondaryText,
+                                                        size: 72.0,
                                                       ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  4.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        'Upload your audio here...',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium,
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    12.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          'Upload Audio',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .titleLarge,
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    4.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          'Upload your audio here...',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -291,8 +378,53 @@ class _CreateRecordingWidgetState extends State<CreateRecordingWidget>
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 4.0, 0.0),
                                             child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
+                                              onPressed: () async {
+                                                _model.apiResultscv =
+                                                    await DeepgramCall.call(
+                                                  url: _model.uploadedFileUrl,
+                                                );
+                                                if ((_model.apiResultscv
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  _model.apiResult86z =
+                                                      await ChatGPTAPICall.call(
+                                                    transcript:
+                                                        DeepgramCall.transcript(
+                                                      (_model.apiResultscv
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ).toString(),
+                                                  );
+                                                  if ((_model.apiResult86z
+                                                          ?.succeeded ??
+                                                      true)) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              'Api Response'),
+                                                          content: Text((_model
+                                                                      .apiResult86z
+                                                                      ?.jsonBody ??
+                                                                  '')
+                                                              .toString()),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                  }
+                                                }
+
+                                                setState(() {});
                                               },
                                               text: 'Save',
                                               options: FFButtonOptions(
