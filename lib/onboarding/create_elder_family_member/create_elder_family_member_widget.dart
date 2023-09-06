@@ -458,14 +458,13 @@ class _CreateElderFamilyMemberWidgetState
                           16.0, 12.0, 16.0, 24.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          await ElderlyFamilyMemberRecord.collection.doc().set({
-                            ...createElderlyFamilyMemberRecordData(
-                              firstName: _model.textController1.text,
-                              age: _model.textController2.text,
-                              relation: _model.textController3.text,
-                            ),
-                            'images': [_model.uploadedFileUrl],
-                          });
+                          await ElderlyFamilyMemberRecord.collection
+                              .doc()
+                              .set(createElderlyFamilyMemberRecordData(
+                                firstName: _model.textController1.text,
+                                age: _model.textController2.text,
+                                relation: _model.textController3.text,
+                              ));
 
                           context.pushNamed('Home');
                         },
