@@ -1,5 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -7,7 +5,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -458,14 +455,6 @@ class _CreateElderFamilyMemberWidgetState
                           16.0, 12.0, 16.0, 24.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          await ElderlyFamilyMemberRecord.collection
-                              .doc()
-                              .set(createElderlyFamilyMemberRecordData(
-                                firstName: _model.textController1.text,
-                                age: _model.textController2.text,
-                                relation: _model.textController3.text,
-                              ));
-
                           context.pushNamed('Home');
                         },
                         text: 'Create Profile',
