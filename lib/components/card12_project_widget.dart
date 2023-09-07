@@ -121,7 +121,7 @@ class _Card12ProjectWidgetState extends State<Card12ProjectWidget>
                           color: Color(0x98FFFFFF),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Icon(
                           Icons.desktop_windows,
                           color: Colors.white,
@@ -159,7 +159,7 @@ class _Card12ProjectWidgetState extends State<Card12ProjectWidget>
                         alignment: AlignmentDirectional(-1.0, 0.0),
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(-0.91, 0.0),
+                            alignment: AlignmentDirectional(-0.91, 0.00),
                             child: Container(
                               width: 28.0,
                               height: 28.0,
@@ -174,7 +174,7 @@ class _Card12ProjectWidgetState extends State<Card12ProjectWidget>
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(-0.62, 0.0),
+                            alignment: AlignmentDirectional(-0.62, 0.00),
                             child: Container(
                               width: 28.0,
                               height: 28.0,
@@ -189,7 +189,7 @@ class _Card12ProjectWidgetState extends State<Card12ProjectWidget>
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(-0.35, 0.0),
+                            alignment: AlignmentDirectional(-0.35, 0.00),
                             child: Container(
                               width: 28.0,
                               height: 28.0,

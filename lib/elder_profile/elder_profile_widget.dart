@@ -126,7 +126,7 @@ class _ElderProfileWidgetState extends State<ElderProfileWidget>
           elevation: 0.0,
         ),
         body: Align(
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.00, 0.00),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -153,7 +153,7 @@ class _ElderProfileWidgetState extends State<ElderProfileWidget>
                         shape: BoxShape.circle,
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               4.0, 4.0, 4.0, 4.0),
@@ -360,7 +360,8 @@ class _ElderProfileWidgetState extends State<ElderProfileWidget>
                                     final listViewRecordingRow =
                                         listViewRecordingRowList[listViewIndex];
                                     return Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 16.0, 0.0, 0.0),
@@ -486,8 +487,8 @@ class _ElderProfileWidgetState extends State<ElderProfileWidget>
                                                                     ),
                                                                     alignment:
                                                                         AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0),
+                                                                            0.00,
+                                                                            0.00),
                                                                     child: Icon(
                                                                       Icons
                                                                           .play_arrow_sharp,
@@ -551,7 +552,8 @@ class _ElderProfileWidgetState extends State<ElderProfileWidget>
                                                               ),
                                                               alignment:
                                                                   AlignmentDirectional(
-                                                                      0.0, 0.0),
+                                                                      0.00,
+                                                                      0.00),
                                                               child: Icon(
                                                                 Icons
                                                                     .calendar_month,

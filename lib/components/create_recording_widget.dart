@@ -379,6 +379,10 @@ class _CreateRecordingWidgetState extends State<CreateRecordingWidget>
                                                     0.0, 0.0, 4.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
+                                                await RecordingTable().insert({
+                                                  'family_member_id':
+                                                      widget.familyMember?.id,
+                                                });
                                                 _model.apiResultscv =
                                                     await DeepgramCall.call(
                                                   url: _model.uploadedFileUrl,

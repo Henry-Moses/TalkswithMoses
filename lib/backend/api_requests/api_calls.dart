@@ -39,7 +39,7 @@ class ChatGPTAPICall {
   static Future<ApiCallResponse> call({
     String? transcript = '',
   }) {
-    final body = '''
+    final ffApiRequestBody = '''
 {
   "model": "text-davinci-003",
   "prompt": "Create a summary of this transcript: ${transcript} ",
@@ -56,7 +56,7 @@ class ChatGPTAPICall {
         'Content-Type': 'application/json',
       },
       params: {},
-      body: body,
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -70,7 +70,7 @@ class DeepgramCall {
   static Future<ApiCallResponse> call({
     String? url = '',
   }) {
-    final body = '''
+    final ffApiRequestBody = '''
 {
   "url": "${url}"
 }''';
@@ -83,7 +83,7 @@ class DeepgramCall {
         'content-type': 'application/json',
       },
       params: {},
-      body: body,
+      body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,

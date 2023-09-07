@@ -65,7 +65,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
-                  alignment: AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.00, -1.00),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -84,7 +84,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                               topRight: Radius.circular(0.0),
                             ),
                           ),
-                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.00, 0.00),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 0.0, 0.0),
@@ -109,7 +109,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                 .secondaryBackground,
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.00, 0.00),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 24.0, 24.0, 24.0),
@@ -595,8 +595,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             AlignmentDirectional(0.0, 0.0),
                                         children: [
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 0.00),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -613,8 +613,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                             ),
                                           ),
                                           Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                            alignment: AlignmentDirectional(
+                                                0.00, 0.00),
                                             child: Container(
                                               width: 70.0,
                                               height: 32.0,
@@ -624,7 +624,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                                         .secondaryBackground,
                                               ),
                                               alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
+                                                  0.00, 0.00),
                                               child: Text(
                                                 'OR',
                                                 style:
@@ -726,11 +726,13 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
 
                                   // You will have to add an action on this rich text to go to your login page.
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.00, 0.00),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 12.0, 0.0, 12.0),
                                       child: RichText(
+                                        textScaleFactor: MediaQuery.of(context)
+                                            .textScaleFactor,
                                         text: TextSpan(
                                           children: [
                                             TextSpan(
