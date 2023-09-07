@@ -152,13 +152,20 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                       _model.textControllerValidator.asValidator(context),
                 ),
               ),
-              wrapWithModel(
-                model: _model.card27InsuranceCardModel,
-                updateCallback: () => setState(() {}),
-                child: Card27InsuranceCardWidget(),
-              ),
+              if (responsiveVisibility(
+                context: context,
+                phone: false,
+                tablet: false,
+                tabletLandscape: false,
+                desktop: false,
+              ))
+                wrapWithModel(
+                  model: _model.card27InsuranceCardModel,
+                  updateCallback: () => setState(() {}),
+                  child: Card27InsuranceCardWidget(),
+                ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 0.0, 0.0),
                 child: Text(
                   'Elders',
                   style: FlutterFlowTheme.of(context).headlineSmall.override(

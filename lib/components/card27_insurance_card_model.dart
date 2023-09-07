@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,6 +10,10 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 
 class Card27InsuranceCardModel extends FlutterFlowModel {
+  ///  Local state fields for this component.
+
+  FamilyMemberRow? elderly;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

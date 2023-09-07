@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -95,11 +96,11 @@ class _Card27InsuranceCardWidgetState extends State<Card27InsuranceCardWidget>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Your First Book',
+                'Road to Your First Book',
                 style: FlutterFlowTheme.of(context).headlineSmall,
               ),
               Text(
-                'Elderly Family Member: ',
+                'Elderly Family Member:',
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
               Padding(
@@ -127,7 +128,7 @@ class _Card27InsuranceCardWidgetState extends State<Card27InsuranceCardWidget>
                     ),
                   ),
                   Text(
-                    'of 20 questions',
+                    'of 10 recordings',
                     style: FlutterFlowTheme.of(context).titleMedium.override(
                           fontFamily: 'Roboto',
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -138,7 +139,7 @@ class _Card27InsuranceCardWidgetState extends State<Card27InsuranceCardWidget>
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                 child: Text(
-                  'Last Question Answered: Jun 30, 2022',
+                  'Last Recording Posted: Jun 30, 2022',
                   style: FlutterFlowTheme.of(context).labelSmall,
                 ),
               ),
