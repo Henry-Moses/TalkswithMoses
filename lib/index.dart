@@ -1,6 +1,4 @@
 // Export pages
-export '/add_family_memeber/add_family_memeber_widget.dart'
-    show AddFamilyMemeberWidget;
 export '/elder_profile/elder_profile_widget.dart' show ElderProfileWidget;
 export '/home/home_widget.dart' show HomeWidget;
 export '/my_profile/my_profile_widget.dart' show MyProfileWidget;

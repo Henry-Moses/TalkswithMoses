@@ -88,11 +88,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : CreateAccountWidget(),
         ),
         FFRoute(
-          name: 'AddFamilyMemeber',
-          path: '/addFamilyMemeber',
-          builder: (context, params) => AddFamilyMemeberWidget(),
-        ),
-        FFRoute(
           name: 'ElderProfile',
           path: '/elderProfile',
           builder: (context, params) => ElderProfileWidget(
